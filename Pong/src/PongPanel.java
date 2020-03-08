@@ -3,6 +3,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Graphics; // this and the next one lets us paint graphics on the screen
 import java.awt.Graphics2D;
+import java.awt.Stroke; // this and next one for a dotted line
+import java.awt.BasicStroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -53,21 +55,31 @@ public class PongPanel extends JPanel  implements ActionListener, KeyListener {
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		// TODO Auto-generated method stub
-		
+	     update();
+	     repaint();
+		// The repaint() method gives us a convenient way to update the graphics.
 	} 
 	private void update() { // this method updates the timer and the program
         
 	 }
 	/*
 	 * This method below will draw a white rectangle onto the screen
+	 *  g.setColor(Color.WHITE);
+     *  g.fillRect(20, 20, 100, 100);
+     *  which is removed afterwards
 	 */
 	@Override
 	 public void paintComponent(Graphics g) { 
 	     super.paintComponent(g);
-	     g.setColor(Color.WHITE);
-	     g.fillRect(20, 20, 100, 100);
+	      paintDottedLine(g);
 	 }
-	
+	private void paintDottedLine(Graphics g) { // method to paint a dotted line. Only used once and added to the painComponent above
+	      Graphics2D g2d = (Graphics2D) g.create();
+	         Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+	         g2d.setStroke(dashed);
+	         g2d.setPaint(Color.WHITE);
+	         g2d.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight());
+	         g2d.dispose();
+	 }
 	
 }
