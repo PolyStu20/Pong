@@ -6,7 +6,8 @@ public class Pong extends JFrame {
 	private final static int WINDOW_WIDTH = 800;
 	private final static int WINDOW_HEIGHT = 600;
 	// sets up the display window
-	public Pong() {
+	public Pong() { // this is the constructor called Pong
+		add(new PongPanel()); // this adds the panel (PongPal.java) to the frame
     	setTitle(WINDOW_TITLE); //this displays on the title of the screen
     	setSize(WINDOW_WIDTH, WINDOW_HEIGHT); //sets the size of the screen
     	setResizable(false); // set this to true if you want the screen to be able to be resized
