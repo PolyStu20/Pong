@@ -1,5 +1,8 @@
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.swing.Timer;
+import java.awt.Graphics; // this and the next one lets us paint graphics on the screen
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -21,10 +24,14 @@ public class PongPanel extends JPanel  implements ActionListener, KeyListener {
 
 	private final static Color BACKGROUND_COLOUR = Color.BLACK;
 	//makes the colour of the background be a static final variable and so it replaces the "Color.BLACK" in the constructor
+	private final static int TIMER_DELAY = 5; // sets the timer
 	
     public PongPanel() { // this is a constructor
         setBackground(BACKGROUND_COLOUR);
+        Timer timer = new Timer(TIMER_DELAY, this); // adding a timer (also needed "import javax.swing.Timer")
+        timer.start();
     }
+    
         
 	@Override
 	public void keyTyped(KeyEvent event) { // change the e or arg0 to 'event'
@@ -49,6 +56,18 @@ public class PongPanel extends JPanel  implements ActionListener, KeyListener {
 		// TODO Auto-generated method stub
 		
 	} 
+	private void update() { // this method updates the timer and the program
+        
+	 }
+	/*
+	 * This method below will draw a white rectangle onto the screen
+	 */
+	@Override
+	 public void paintComponent(Graphics g) { 
+	     super.paintComponent(g);
+	     g.setColor(Color.WHITE);
+	     g.fillRect(20, 20, 100, 100);
+	 }
 	
 	
 }
