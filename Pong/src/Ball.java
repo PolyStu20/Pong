@@ -14,4 +14,5 @@ import java.awt.Color;
           setInitialPosition(panelWidth / 2 - (getWidth() / 2), panelHeight / 2 - (getHeight() / 2)); //Set the initial starting position
           resetToInitialPosition(); //set the position of the ball to the initial position we provided
       }
+       
  }
